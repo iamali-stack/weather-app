@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Weather App</title>
+ 
+  <link rel="stylesheet" href="css/bootstrap.min.css" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="fontawesome-all.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body class="bg-dark text-white" style="min-height:100vh;">
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark py-3">
+    <div class="container" style="width: 80%;">
+      <a class="navbar-brand d-flex align-items-center" href="#">
+        <span class="me-2"><img src="images/logo_2x.png" alt="" class="logo" width="64" height="38"></span>
+        <div>
+          <div class="fw-bold">Company name</div>
+          <small class="text-white">tagline goes here</small>
+        </div>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">News</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Live cameras</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Photos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="contact.html">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Breadcrumb -->
+  <div class="container" style="margin-top: 40px;">
+    <div style="background: #232533; border-radius: 32px; padding: 18px 40px; width: 100%; margin-bottom: 40px;">
+      <span style="color: #b0b8c1;">Home</span>
+      <span style="color: #b0b8c1; margin: 0 10px;">→</span>
+      <span style="color: #fff;">Contact</span>
+    </div>
+  </div>
+
+  <!-- Contact Section -->
+  <div class="container" style="margin-bottom: 80px;">
+    <div class="row align-items-start" style="gap: 0;">
+      <!-- Contact Info -->
+      <div class="col-lg-5 col-md-12 mb-4 mb-lg-0">
+        <div style="background: #232533; border-radius: 14px; padding: 40px 32px; min-height: 350px; display: flex; flex-direction: column; justify-content: flex-end; height: 100%;">
+          <div style="margin-bottom: 24px;">
+            <span style="color: #00cfff;"><i class="fas fa-map-marker-alt"></i></span>
+            <span style="margin-left: 10px;">Company Name INC.<br>2803 Avenue Street, Los Angeles</span>
+          </div>
+          <div style="margin-bottom: 12px;">
+            <span style="color: #00cfff;"><i class="fas fa-phone"></i></span>
+            <span style="margin-left: 10px;">+1 800 314 235</span>
+            <span style="color: #00cfff; margin-left: 24px;"><i class="fas fa-envelope"></i></span>
+            <span style="margin-left: 10px;">contact@companyname.com</span>
+          </div>
+        </div>
+      </div>
+      <!-- Contact Form -->
+      <div class="col-lg-7 col-md-12">
+        <h1 style="font-size: 2.7rem; font-weight: 400; margin-bottom: 18px;">Contact us</h1>
+        <p style="color: #b0b8c1; margin-bottom: 32px;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi consectetur inventore ducimus, facilis, numquam id soluta omnis eius recusandae nesciunt vero repellat harum cum. Nisi facilis odit hic, ipsum sed!</p>
+        <form>
+          <div class="row g-3">
+            <div class="col-md-6">
+              <input type="text" class="form-control contact-input" placeholder="Your name..." style="background: transparent; border: 2px solid #444857; color: #b0b8c1; border-radius: 32px; padding: 16px 24px; font-size: 1.1rem;">
+            </div>
+            <div class="col-md-6">
+              <input type="email" class="form-control contact-input" placeholder="Email Addresss..." style="background: transparent; border: 2px solid #444857; color: #b0b8c1; border-radius: 32px; padding: 16px 24px; font-size: 1.1rem;">
+            </div>
+            <div class="col-md-6">
+              <input type="text" class="form-control contact-input" placeholder="Company name..." style="background: transparent; border: 2px solid #444857; color: #b0b8c1; border-radius: 32px; padding: 16px 24px; font-size: 1.1rem;">
+            </div>
+            <div class="col-md-6">
+              <input type="text" class="form-control contact-input" placeholder="Website..." style="background: transparent; border: 2px solid #444857; color: #b0b8c1; border-radius: 32px; padding: 16px 24px; font-size: 1.1rem;">
+            </div>
+            <div class="col-12">
+              <textarea class="form-control contact-input" rows="5" placeholder="Message..." style="background: transparent; border: 2px solid #444857; color: #b0b8c1; border-radius: 32px; padding: 16px 24px; font-size: 1.1rem;"></textarea>
+            </div>
+          </div>
+          <div class="d-flex justify-content-end mt-4">
+            <button type="submit" class="btn btn-info" style="border-radius: 32px; padding: 8px 36px; font-size: 1.1rem;">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-flex">
+        <form class="footer-form">
+          <input type="text" class="footer-input" placeholder="Enter your email to subscribe...">
+          <button type="submit" class="footer-btn">Subscribe</button>
+        </form>
+        <div class="footer-social">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-google-plus-g"></i></a>
+          <a href="#"><i class="fab fa-pinterest-p"></i></a>
+        </div>
+      </div>
+      <p class="colophon">Copyright 2014 Company name. Designed by Themezy. All rights reserved</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html> 
