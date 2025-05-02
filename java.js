@@ -1,6 +1,6 @@
 // Weather API Configuration
 const API_KEY = '1aee38768bf145a999f112347253004';
-const BASE_URL = 'http://api.weatherapi.com/v1';
+const BASE_URL = 'https://api.weatherapi.com/v1';
 
 // Function to get user's location
 function getUserLocation() {
@@ -20,7 +20,17 @@ function getUserLocation() {
             },
             (error) => {
                 console.error('Error getting location:', error);
+                // Show user-friendly error message
+                const errorMessage = document.createElement('div');
+                errorMessage.className = 'alert alert-warning mt-3';
+                errorMessage.textContent = 'Unable to detect your location. Please enable location access or search for a city manually.';
+                document.querySelector('.search-form').after(errorMessage);
                 reject(error);
+            },
+            {
+                enableHighAccuracy: true,
+                timeout: 5000,
+                maximumAge: 0
             }
         );
     });
@@ -172,6 +182,11 @@ async function loadUserLocationWeather() {
         updateForecastUI(forecastWeather);
     } catch (error) {
         console.error('Error loading user location weather:', error);
+        // Show user-friendly error message
+        const errorMessage = document.createElement('div');
+        errorMessage.className = 'alert alert-warning mt-3';
+        errorMessage.textContent = 'Loading default weather for Cairo. You can search for your location manually.';
+        document.querySelector('.search-form').after(errorMessage);
         // Fallback to Cairo if geolocation fails
         loadDefaultWeather();
     }
