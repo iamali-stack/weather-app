@@ -41,11 +41,20 @@ function getUserLocation() {
 // Function to fetch current weather
 async function getCurrentWeather(location) {
     try {
-        const response = await fetch(`${BASE_URL}/current.json?key=${API_KEY}&q=${location}`);
+        console.log('Fetching weather for:', location);
+        const response = await fetch(`${BASE_URL}/current.json?key=${API_KEY}&q=${location}`, {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json'
+            }
+        });
+        
         if (!response.ok) {
-            throw new Error('Weather data not found');
+            throw new Error(`Weather API error: ${response.status}`);
         }
+        
         const data = await response.json();
+        console.log('Weather data received:', data);
         return data;
     } catch (error) {
         console.error('Error fetching weather:', error);
@@ -56,11 +65,20 @@ async function getCurrentWeather(location) {
 // Function to fetch forecast weather
 async function getForecastWeather(location) {
     try {
-        const response = await fetch(`${BASE_URL}/forecast.json?key=${API_KEY}&q=${location}&days=3`);
+        console.log('Fetching forecast for:', location);
+        const response = await fetch(`${BASE_URL}/forecast.json?key=${API_KEY}&q=${location}&days=3`, {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json'
+            }
+        });
+        
         if (!response.ok) {
-            throw new Error('Forecast data not found');
+            throw new Error(`Forecast API error: ${response.status}`);
         }
+        
         const data = await response.json();
+        console.log('Forecast data received:', data);
         return data;
     } catch (error) {
         console.error('Error fetching forecast:', error);
@@ -203,7 +221,7 @@ async function loadDefaultWeather() {
         // Show error message if even Cairo weather fails to load
         const errorMessage = document.createElement('div');
         errorMessage.className = 'alert alert-danger mt-3';
-        errorMessage.textContent = 'Unable to load weather data. Please try again later.';
+        errorMessage.textContent = 'Unable to load weather data. Please check your internet connection and try again.';
         document.querySelector('.search-form').after(errorMessage);
     }
 }
