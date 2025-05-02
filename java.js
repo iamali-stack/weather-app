@@ -6,12 +6,14 @@ const BASE_URL = 'https://api.weatherapi.com/v1';
 function getUserLocation() {
     return new Promise((resolve, reject) => {
         if (!navigator.geolocation) {
-            reject(new Error('Geolocation is not supported by your browser'));
+            console.log('Geolocation is not supported by your browser');
+            reject(new Error('Geolocation not supported'));
             return;
         }
 
         navigator.geolocation.getCurrentPosition(
             (position) => {
+                console.log('Location obtained successfully:', position);
                 const location = {
                     lat: position.coords.latitude,
                     lon: position.coords.longitude
@@ -23,13 +25,13 @@ function getUserLocation() {
                 // Show user-friendly error message
                 const errorMessage = document.createElement('div');
                 errorMessage.className = 'alert alert-warning mt-3';
-                errorMessage.textContent = 'Unable to detect your location. Please enable location access or search for a city manually.';
+                errorMessage.textContent = 'Unable to detect your location. Loading weather for Cairo.';
                 document.querySelector('.search-form').after(errorMessage);
                 reject(error);
             },
             {
                 enableHighAccuracy: true,
-                timeout: 5000,
+                timeout: 10000,
                 maximumAge: 0
             }
         );
@@ -182,12 +184,7 @@ async function loadUserLocationWeather() {
         updateForecastUI(forecastWeather);
     } catch (error) {
         console.error('Error loading user location weather:', error);
-        // Show user-friendly error message
-        const errorMessage = document.createElement('div');
-        errorMessage.className = 'alert alert-warning mt-3';
-        errorMessage.textContent = 'Loading default weather for Cairo. You can search for your location manually.';
-        document.querySelector('.search-form').after(errorMessage);
-        // Fallback to Cairo if geolocation fails
+        // Immediately load Cairo weather without showing additional error message
         loadDefaultWeather();
     }
 }
@@ -195,6 +192,7 @@ async function loadUserLocationWeather() {
 // Function to load default weather data for Cairo
 async function loadDefaultWeather() {
     try {
+        console.log('Loading default weather for Cairo');
         const currentWeather = await getCurrentWeather('Cairo');
         const forecastWeather = await getForecastWeather('Cairo');
         
@@ -202,6 +200,11 @@ async function loadDefaultWeather() {
         updateForecastUI(forecastWeather);
     } catch (error) {
         console.error('Error loading default weather:', error);
+        // Show error message if even Cairo weather fails to load
+        const errorMessage = document.createElement('div');
+        errorMessage.className = 'alert alert-danger mt-3';
+        errorMessage.textContent = 'Unable to load weather data. Please try again later.';
+        document.querySelector('.search-form').after(errorMessage);
     }
 }
 
